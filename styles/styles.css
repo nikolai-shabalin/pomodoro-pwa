@@ -1,0 +1,67 @@
+:root {
+  font-family: sans-serif;
+  --text-basic: #f4eddb;
+  --bg-basis: #e7626c;
+  --bg-active: #13b888;
+}
+
+body {
+  min-width: 320px;
+}
+
+.app {
+  border-radius: 16px;
+  background-color: var(--bg-basis);
+  padding: 20px;
+}
+
+.active {
+  background-color: var(--bg-active);
+}
+
+.timer {
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  width: fit-content;
+  font-size: 90px;
+  line-height: 1.1;
+  color: var(--text-basic);
+  margin-bottom: 20px;
+  user-select: none;
+}
+
+.controls {
+  width: fit-content;
+  margin-inline: auto;
+}
+
+.toggle {
+  --size: 80px;
+  border: unset;
+  background-color: unset;
+  width: var(--size);
+  aspect-ratio: 1;
+  border: 3px solid var(--text-basic);
+  border-radius: calc(var(--size) / 2);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.toggle::before {
+  content: '';
+  width: 29px;
+  height: 34px;
+  position: relative;
+}
+
+.start::before {
+  background-image: url("../images/play.svg");
+  right: -4px;
+}
+
+.pause::before {
+  background-image: url("../images/pause.svg");
+  right: -1px;
+}

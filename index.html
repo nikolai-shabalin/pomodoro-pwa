@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <title>Pomodoro</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="timer">
+        <div class="minutes">25</div>
+        <div class="separate">:</div>
+        <div class="seconds">00</div>
+      </div>
+      <div class="controls">
+        <button class="toggle start" aria-label="Начать"></button>
+      </div>
+    </div>
+    <script src="scripts/app.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('scripts/sw.js').then(function(registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
