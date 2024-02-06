@@ -49,6 +49,10 @@ body {
   cursor: pointer;
 }
 
+.toggle:focus {
+  outline-offset: 5px;
+}
+
 .toggle::before {
   content: '';
   width: 29px;
