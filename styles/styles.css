@@ -5,8 +5,15 @@
   --bg-active: #13b888;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   min-width: 320px;
+  display: grid;
+  place-content: center;
+  min-height: 100%;
 }
 
 .app {
