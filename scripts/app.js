@@ -1,3 +1,4 @@
+const body = document.body;
 const app = document.querySelector('.app');
 const timer = app.querySelector('.timer');
 const minutes = timer.querySelector('.minutes');
@@ -14,7 +15,7 @@ let time = 25 * 60;
 const toggleButtonClass =() => {
   button.classList.toggle(startClass);
   button.classList.toggle(pauseClass);
-  app.classList.toggle(activeClass);
+  body.classList.toggle(activeClass);
 }
 
 const startTimer = timeLeft => {

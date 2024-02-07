@@ -10,21 +10,24 @@ html {
 }
 
 body {
+  margin: unset;
   min-width: 320px;
   display: grid;
   place-content: center;
   min-height: 100%;
-}
-
-.app {
-  border-radius: 16px;
   background-color: var(--bg-basis);
-  padding: 20px;
 }
 
 .active {
   background-color: var(--bg-active);
 }
+
+
+.app {
+  border-radius: 16px;
+  padding: 20px;
+}
+
 
 .timer {
   margin-inline: auto;
