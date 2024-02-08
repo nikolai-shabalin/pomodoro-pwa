@@ -4,18 +4,31 @@ const timer = app.querySelector('.timer');
 const minutes = timer.querySelector('.minutes');
 const seconds = timer.querySelector('.seconds');
 const button = app.querySelector('.toggle');
+const themeElement = document.querySelector('meta[name="theme-color"]');
 
 const startClass = 'start';
 const pauseClass = 'pause';
 const activeClass = 'active';
 
+let currentThemeColor = '#e7626c';
 let countdown;
 let time = 25 * 60;
+
+const changeThemeColor = () => {
+  if (currentThemeColor === '#e7626c') {
+    themeElement.setAttribute('content', '#13b888');
+    currentThemeColor = '#13b888';
+  } else {
+    themeElement.setAttribute('content', '#e7626c');
+    currentThemeColor = '#e7626c';
+  }
+}
 
 const toggleButtonClass =() => {
   button.classList.toggle(startClass);
   button.classList.toggle(pauseClass);
   body.classList.toggle(activeClass);
+  changeThemeColor();
 }
 
 const startTimer = timeLeft => {
@@ -43,5 +56,5 @@ const startTimer = timeLeft => {
 }
 
 button.addEventListener('click', () => {
-  startTimer(time)
+  startTimer(time);
 });

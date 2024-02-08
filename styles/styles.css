@@ -1,8 +1,7 @@
 :root {
   font-family: sans-serif;
   --text-basic: #f4eddb;
-  --bg-basis: #e7626c;
-  --bg-active: #13b888;
+  --bg-theme: #e7626c;
 }
 
 html {
@@ -15,13 +14,12 @@ body {
   display: grid;
   place-content: center;
   min-height: 100%;
-  background-color: var(--bg-basis);
+  background-color: var(--bg-theme);
 }
 
 .active {
-  background-color: var(--bg-active);
+  --bg-theme: #13b888;
 }
-
 
 .app {
   border-radius: 16px;
