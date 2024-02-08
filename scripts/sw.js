@@ -2,12 +2,11 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('pomodoro-cache-v1').then(function(cache) {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/styles/styles.css',
-        '/scripts/app.js',
-        '/images/play.svg',
-        '/images/pause.svg'
+        '../index.html',
+        '../styles/styles.css',
+        '../scripts/app.js',
+        '../images/play.svg',
+        '../images/pause.svg'
       ]);
     })
   );

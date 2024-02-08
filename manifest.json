@@ -6,6 +6,7 @@
   "display": "fullscreen",
   "background_color": "#e7626c",
   "theme_color": "#e7626c",
+  "version": "1.0.1",
   "icons": [
     {
       "src": "images/icons/icon-192x192.png",
