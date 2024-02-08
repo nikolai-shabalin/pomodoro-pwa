@@ -9,18 +9,20 @@ const themeElement = document.querySelector('meta[name="theme-color"]');
 const startClass = 'start';
 const pauseClass = 'pause';
 const activeClass = 'active';
-
-let currentThemeColor = '#e7626c';
 let countdown;
 let time = 25 * 60;
 
+const colorPlay = '#13b888';
+const colorPause = '#e7626c';
+let currentThemeColor = colorPause;
+
 const changeThemeColor = () => {
-  if (currentThemeColor === '#e7626c') {
-    themeElement.setAttribute('content', '#13b888');
-    currentThemeColor = '#13b888';
+  if (currentThemeColor === colorPause) {
+    themeElement.setAttribute('content', colorPlay);
+    currentThemeColor = colorPlay;
   } else {
-    themeElement.setAttribute('content', '#e7626c');
-    currentThemeColor = '#e7626c';
+    themeElement.setAttribute('content', colorPause);
+    currentThemeColor = colorPause;
   }
 }
 
