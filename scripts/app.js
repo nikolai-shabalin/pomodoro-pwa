@@ -8,6 +8,7 @@ const themeElement = document.querySelector('meta[name="theme-color"]');
 
 const startClass = 'start';
 const pauseClass = 'pause';
+const finishedClass = 'finished';
 const activeClass = 'active';
 let countdown;
 let time = 25 * 60;
@@ -30,7 +31,15 @@ const toggleButtonClass =() => {
   button.classList.toggle(startClass);
   button.classList.toggle(pauseClass);
   body.classList.toggle(activeClass);
+
   changeThemeColor();
+}
+
+const addClassFinished = () => {
+  body.classList.add(finishedClass);
+}
+const removeClassFinished = () => {
+  body.classList.remove(finishedClass);
 }
 
 const startTimer = timeLeft => {
@@ -47,6 +56,7 @@ const startTimer = timeLeft => {
       if (timeLeft <= 0) {
         clearInterval(countdown);
         toggleButtonClass();
+        addClassFinished();
       }
     }, 1000);
 
@@ -58,5 +68,6 @@ const startTimer = timeLeft => {
 }
 
 button.addEventListener('click', () => {
+  removeClassFinished();
   startTimer(time);
 });

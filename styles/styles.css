@@ -21,6 +21,20 @@ body {
   --bg-theme: #13b888;
 }
 
+@keyframes blink {
+  0% { background-color: var(--bg-theme); }
+  50% { background-color: transparent; }
+  100% { background-color: var(--bg-theme); }
+}
+
+.finished {
+  animation: blink 300ms ease-in infinite;
+}
+
+.finished {
+
+}
+
 .app {
   border-radius: 16px;
   padding: 20px;
