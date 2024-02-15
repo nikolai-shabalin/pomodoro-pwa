@@ -1,0 +1,17 @@
+{
+  "name": "pomodoro-pwa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sw.js",
+  "scripts": {
+    "lint:scripts": "eslint . --ignore-path .gitignore",
+    "lint": "npm run lint:scripts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-htmlacademy": "10.0.1"
+  }
+}

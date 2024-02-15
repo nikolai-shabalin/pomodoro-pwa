@@ -11,31 +11,29 @@ const currentStates = {
   PAUSED: 'paused',
   SHORTBREAK: 'shortbreak',
   LONGBREAK: 'longbreak'
-}
+};
 const colors = {
   PLAY: '#13b888',
   PAUSE: '#e7626c',
-}
+};
 
 let currentState = currentStates.STOPPED;
 let countdown;
 let time = 25 * 60;
-let currentThemeColor = colors.PAUSE;
 
 const changeThemeColor = () => {
   const color = currentState === currentStates.RUNNING ? colors.PLAY : colors.PAUSE;
   themeElement.setAttribute('content', color);
-  currentThemeColor = color;
-}
+};
 
 const updateUI = () => {
   const isRunning = currentState === currentStates.RUNNING;
   body.classList.toggle('active', isRunning);
   body.classList.toggle('finished', !isRunning && currentState === currentStates.STOPPED);
-  button.classList.toggle('start', isRunning);
-  button.classList.toggle('pause', !isRunning);
+  button.classList.toggle('start', !isRunning);
+  button.classList.toggle('pause', isRunning);
   changeThemeColor();
-}
+};
 
 const startTimer = () => {
   currentState = currentStates.RUNNING;
@@ -55,7 +53,7 @@ const startTimer = () => {
       updateUI();
     }
   }, 1000);
-}
+};
 
 const toggleTimer = () => {
   if (currentState === currentStates.RUNNING) {
@@ -70,7 +68,7 @@ const toggleTimer = () => {
     startTimer();
   }
   updateUI();
-}
+};
 
 button.addEventListener('click', toggleTimer);
 
