@@ -2,19 +2,20 @@
   "name": "Pomodoro PWA",
   "short_name": "Pomodoro",
   "description": "A simple Pomodoro timer PWA",
-  "start_url": "/",
+  "scope": "/pomodoro-pwa/",
+  "start_url": "/pomodoro-pwa/",
   "display": "fullscreen",
   "background_color": "#e7626c",
   "theme_color": "#e7626c",
   "version": "1.0.1",
   "icons": [
     {
-      "src": "images/icons/icon-192x192.png",
+      "src": "/pomodoro-pwa/images/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "images/icons/icon-512x512.png",
+      "src": "/pomodoro-pwa/images/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

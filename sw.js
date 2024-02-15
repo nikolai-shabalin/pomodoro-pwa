@@ -1,4 +1,4 @@
-const cacheName = 'pomodoro-cache-v2';
+const cacheName = 'pomodoro-cache-v3';
 const filesToCache = [
   './',
   './index.html',
