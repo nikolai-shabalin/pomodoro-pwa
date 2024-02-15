@@ -26,7 +26,7 @@
     {
       "name": "Запустить таймер",
       "short_name": "Запустить",
-      "url": "/pomodoro-pwa/?state=runnig",
+      "url": "/pomodoro-pwa/?state=running",
       "description": "Запускает таймер",
       "icons": [
         {
