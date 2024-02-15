@@ -9,17 +9,17 @@ const currentStates = {
   STOPPED: 'stopped',
   RUNNING: 'running',
   PAUSED: 'paused',
+  SHORBREAK: 'shortbreak',
+  LONGBREAK: 'longbreak'
 };
-
-let currentState = currentStates.STOPPED;
-let countdown;
-let time = 25 * 60;
-
 const colors = {
   PLAY: '#13b888',
   PAUSE: '#e7626c',
 }
 
+let currentState = currentStates.STOPPED;
+let countdown;
+let time = 25 * 60;
 let currentThemeColor = colors.PAUSE;
 
 const changeThemeColor = () => {
