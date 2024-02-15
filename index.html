@@ -11,9 +11,9 @@
   <body>
     <div class="app">
       <div class="timer">
-        <div class="minutes">25</div>
-        <div class="separate">:</div>
-        <div class="seconds">00</div>
+        <span class="minutes">25</span>
+        <span class="separate">:</span>
+        <span class="seconds">00</span>
       </div>
       <div class="controls">
         <button class="toggle start" aria-label="Начать"></button>
@@ -23,7 +23,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('sw.js',).then(registration => {
+          navigator.serviceWorker.register('sw.js').then(registration => {
             console.log('ServiceWorker registration successful with scope: ', registration.scope);
           }, error => {
             console.log('ServiceWorker registration failed: ', error);

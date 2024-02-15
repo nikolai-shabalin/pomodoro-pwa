@@ -9,9 +9,9 @@ const currentStates = {
   STOPPED: 'stopped',
   RUNNING: 'running',
   PAUSED: 'paused',
-  SHORBREAK: 'shortbreak',
+  SHORTBREAK: 'shortbreak',
   LONGBREAK: 'longbreak'
-};
+}
 const colors = {
   PLAY: '#13b888',
   PAUSE: '#e7626c',
@@ -73,3 +73,10 @@ const toggleTimer = () => {
 }
 
 button.addEventListener('click', toggleTimer);
+
+// Автоматический запуск таймера на основе параметра URL
+const urlParams = new URLSearchParams(window.location.search);
+const initialStateFromURL = urlParams.get('state');
+if (initialStateFromURL === 'running') {
+  toggleTimer();
+}
