@@ -1,73 +1,75 @@
 const body = document.body;
 const app = document.querySelector('.app');
 const timer = app.querySelector('.timer');
-const minutes = timer.querySelector('.minutes');
-const seconds = timer.querySelector('.seconds');
+const [minutes, seconds] = timer.querySelectorAll('.minutes, .seconds');
 const button = app.querySelector('.toggle');
 const themeElement = document.querySelector('meta[name="theme-color"]');
 
-const startClass = 'start';
-const pauseClass = 'pause';
-const finishedClass = 'finished';
-const activeClass = 'active';
+const currentStates = {
+  STOPPED: 'stopped',
+  RUNNING: 'running',
+  PAUSED: 'paused',
+};
+
+let currentState = currentStates.STOPPED;
 let countdown;
 let time = 25 * 60;
 
-const colorPlay = '#13b888';
-const colorPause = '#e7626c';
-let currentThemeColor = colorPause;
-
-const changeThemeColor = () => {
-  if (currentThemeColor === colorPause) {
-    themeElement.setAttribute('content', colorPlay);
-    currentThemeColor = colorPlay;
-  } else {
-    themeElement.setAttribute('content', colorPause);
-    currentThemeColor = colorPause;
-  }
+const colors = {
+  PLAY: '#13b888',
+  PAUSE: '#e7626c',
 }
 
-const toggleButtonClass =() => {
-  button.classList.toggle(startClass);
-  button.classList.toggle(pauseClass);
-  body.classList.toggle(activeClass);
+let currentThemeColor = colors.PAUSE;
 
+const changeThemeColor = () => {
+  const color = currentState === currentStates.RUNNING ? colors.PLAY : colors.PAUSE;
+  themeElement.setAttribute('content', color);
+  currentThemeColor = color;
+}
+
+const updateUI = () => {
+  const isRunning = currentState === currentStates.RUNNING;
+  body.classList.toggle('active', isRunning);
+  body.classList.toggle('finished', !isRunning && currentState === currentStates.STOPPED);
+  button.classList.toggle('start', isRunning);
+  button.classList.toggle('pause', !isRunning);
   changeThemeColor();
 }
 
-const addClassFinished = () => {
-  body.classList.add(finishedClass);
+const startTimer = () => {
+  currentState = currentStates.RUNNING;
+  updateUI();
+  countdown = setInterval(() => {
+    time--;
+
+    const minutesLeft = Math.floor(time / 60);
+    const secondsLeft = time % 60;
+
+    minutes.textContent = String(minutesLeft).padStart(2, '0');
+    seconds.textContent = String(secondsLeft).padStart(2, '0');
+
+    if (time <= 0) {
+      clearInterval(countdown);
+      currentState = currentStates.STOPPED;
+      updateUI();
+    }
+  }, 1000);
 }
-const removeClassFinished = () => {
-  body.classList.remove(finishedClass);
-}
 
-const startTimer = timeLeft => {
-  if (button.classList.contains(startClass)) {
-    countdown = setInterval(() => {
-      timeLeft--;
-
-      const minutesLeft = Math.floor(timeLeft / 60);
-      const secondsLeft = timeLeft % 60;
-
-      minutes.textContent = String(minutesLeft).padStart(2, '0');
-      seconds.textContent = String(secondsLeft).padStart(2, '0');
-
-      if (timeLeft <= 0) {
-        clearInterval(countdown);
-        toggleButtonClass();
-        addClassFinished();
-      }
-    }, 1000);
-
-    toggleButtonClass();
-  } else {
+const toggleTimer = () => {
+  if (currentState === currentStates.RUNNING) {
     clearInterval(countdown);
-    toggleButtonClass();
+    currentState = currentStates.PAUSED;
+  } else if (currentState === currentStates.PAUSED || currentState === currentStates.STOPPED) {
+    if (currentState === currentStates.STOPPED) {
+      time = 25 * 60;
+    }
+    startTimer();
+  } else {
+    startTimer();
   }
+  updateUI();
 }
 
-button.addEventListener('click', () => {
-  removeClassFinished();
-  startTimer(time);
-});
+button.addEventListener('click', toggleTimer);
