@@ -2,41 +2,40 @@ const body = document.body;
 const app = document.querySelector('.app');
 const timer = app.querySelector('.timer');
 const [minutes, seconds] = timer.querySelectorAll('.minutes, .seconds');
-const button = app.querySelector('.toggle');
+const button = app.querySelector('.toggle-timer');
 const themeElement = document.querySelector('meta[name="theme-color"]');
 
-const currentStates = {
+const states = {
   STOPPED: 'stopped',
   RUNNING: 'running',
   PAUSED: 'paused',
+  FINISHED: 'finished',
   SHORTBREAK: 'shortbreak',
   LONGBREAK: 'longbreak'
 };
 const colors = {
-  PLAY: '#13b888',
-  PAUSE: '#e7626c',
+  RUNNING: '#13b888',
+  STOPPED: '#e7626c',
 };
 
-let currentState = currentStates.STOPPED;
+let currentState = states.STOPPED;
 let countdown;
-let time = 25 * 60;
+let time = 15 * 60;
 
 const changeThemeColor = () => {
-  const color = currentState === currentStates.RUNNING ? colors.PLAY : colors.PAUSE;
+  const color = currentState === states.RUNNING ? colors.RUNNING : colors.STOPPED;
   themeElement.setAttribute('content', color);
 };
 
 const updateUI = () => {
-  const isRunning = currentState === currentStates.RUNNING;
-  body.classList.toggle('active', isRunning);
-  body.classList.toggle('finished', !isRunning && currentState === currentStates.STOPPED);
-  button.classList.toggle('start', !isRunning);
-  button.classList.toggle('pause', isRunning);
+  const isRunning = currentState === states.RUNNING;
+  body.classList.toggle(states.RUNNING, isRunning);
+  body.classList.toggle(states.FINISHED, !isRunning && currentState === states.STOPPED);
   changeThemeColor();
 };
 
 const startTimer = () => {
-  currentState = currentStates.RUNNING;
+  currentState = states.RUNNING;
   updateUI();
   countdown = setInterval(() => {
     time--;
@@ -49,18 +48,18 @@ const startTimer = () => {
 
     if (time <= 0) {
       clearInterval(countdown);
-      currentState = currentStates.STOPPED;
+      currentState = states.STOPPED;
       updateUI();
     }
   }, 1000);
 };
 
 const toggleTimer = () => {
-  if (currentState === currentStates.RUNNING) {
+  if (currentState === states.RUNNING) {
     clearInterval(countdown);
-    currentState = currentStates.PAUSED;
-  } else if (currentState === currentStates.PAUSED || currentState === currentStates.STOPPED) {
-    if (currentState === currentStates.STOPPED) {
+    currentState = states.PAUSED;
+  } else if (currentState === states.PAUSED || currentState === states.STOPPED) {
+    if (currentState === states.STOPPED) {
       time = 25 * 60;
     }
     startTimer();

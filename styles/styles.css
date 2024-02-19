@@ -17,7 +17,7 @@ body {
   background-color: var(--bg-theme);
 }
 
-.active {
+.running {
   --bg-theme: #13b888;
 }
 
@@ -58,7 +58,7 @@ body {
   margin-inline: auto;
 }
 
-.toggle {
+.toggle-timer {
   --size: 80px;
   border: unset;
   background-color: unset;
@@ -71,23 +71,23 @@ body {
   cursor: pointer;
 }
 
-.toggle:focus {
+.toggle-timer:focus {
   outline-offset: 5px;
 }
 
-.toggle::before {
+.toggle-timer::before {
   content: '';
   width: 29px;
   height: 34px;
   position: relative;
 }
 
-.start::before {
+.toggle-timer::before {
   background-image: url("../images/play.svg");
   right: -4px;
 }
 
-.pause::before {
+.running .toggle-timer::before {
   background-image: url("../images/pause.svg");
   right: -1px;
 }
