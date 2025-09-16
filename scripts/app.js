@@ -4,6 +4,9 @@ const timer = app.querySelector('.timer');
 const [minutes, seconds] = timer.querySelectorAll('.minutes, .seconds');
 const button = app.querySelector('.toggle-timer');
 const themeElement = document.querySelector('meta[name="theme-color"]');
+const settingsButton = document.querySelector('.settings-btn');
+const settingsOverlay = document.querySelector('.settings-overlay');
+const closeSettingsButton = document.querySelector('.close-settings');
 
 const states = {
   STOPPED: 'stopped',
@@ -77,3 +80,36 @@ const initialStateFromURL = urlParams.get('state');
 if (initialStateFromURL === 'running') {
   toggleTimer();
 }
+
+// Открытие/закрытие настроек
+const openSettings = () => {
+  if (!settingsOverlay) return;
+  settingsOverlay.classList.remove('hidden');
+};
+
+const closeSettings = () => {
+  if (!settingsOverlay) return;
+  settingsOverlay.classList.add('hidden');
+};
+
+if (settingsButton) {
+  settingsButton.addEventListener('click', openSettings);
+}
+
+if (closeSettingsButton) {
+  closeSettingsButton.addEventListener('click', closeSettings);
+}
+
+if (settingsOverlay) {
+  settingsOverlay.addEventListener('click', (event) => {
+    if (event.target === settingsOverlay) {
+      closeSettings();
+    }
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && settingsOverlay && !settingsOverlay.classList.contains('hidden')) {
+    closeSettings();
+  }
+});
