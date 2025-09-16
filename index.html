@@ -10,6 +10,9 @@
   </head>
   <body>
     <div class="app">
+      <div class="header">
+        <button class="settings-btn" aria-label="Настройки">⚙️</button>
+      </div>
       <div class="timer">
         <span class="minutes">25</span>
         <span class="separate">:</span>
@@ -17,6 +20,103 @@
       </div>
       <div class="controls">
         <button class="toggle-timer" aria-label="Начать"></button>
+      </div>
+      <div class="session-info">
+        <div class="session-type">Рабочая сессия</div>
+        <div class="session-counter">Сессия 1 из 4</div>
+      </div>
+    </div>
+
+    <!-- Settings Overlay -->
+    <div class="settings-overlay hidden">
+      <div class="settings-modal">
+        <div class="settings-header">
+          <h2>Настройки Pomodoro</h2>
+          <button class="close-settings" aria-label="Закрыть">×</button>
+        </div>
+        
+        <div class="settings-content">
+          <div class="settings-section">
+            <h3>Временные интервалы (минуты)</h3>
+            <div class="setting-item">
+              <label for="work-duration">Рабочая сессия:</label>
+              <input type="number" id="work-duration" min="1" max="60" value="25">
+            </div>
+            <div class="setting-item">
+              <label for="short-break-duration">Короткий перерыв:</label>
+              <input type="number" id="short-break-duration" min="1" max="30" value="5">
+            </div>
+            <div class="setting-item">
+              <label for="long-break-duration">Длинный перерыв:</label>
+              <input type="number" id="long-break-duration" min="1" max="60" value="15">
+            </div>
+            <div class="setting-item">
+              <label for="sessions-until-long-break">Сессий до длинного перерыва:</label>
+              <input type="number" id="sessions-until-long-break" min="2" max="10" value="4">
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Уведомления</h3>
+            <div class="setting-item">
+              <label class="checkbox-label">
+                <input type="checkbox" id="sound-notifications" checked>
+                <span class="checkmark"></span>
+                Звуковые уведомления
+              </label>
+            </div>
+            <div class="setting-item">
+              <label class="checkbox-label">
+                <input type="checkbox" id="browser-notifications">
+                <span class="checkmark"></span>
+                Уведомления браузера
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Автоматизация</h3>
+            <div class="setting-item">
+              <label class="checkbox-label">
+                <input type="checkbox" id="auto-start-breaks">
+                <span class="checkmark"></span>
+                Автозапуск перерывов
+              </label>
+            </div>
+            <div class="setting-item">
+              <label class="checkbox-label">
+                <input type="checkbox" id="auto-start-sessions">
+                <span class="checkmark"></span>
+                Автозапуск рабочих сессий
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h3>Внешний вид</h3>
+            <div class="setting-item">
+              <label for="theme-select">Цветовая тема:</label>
+              <select id="theme-select">
+                <option value="default">По умолчанию</option>
+                <option value="dark">Тёмная</option>
+                <option value="green">Зелёная</option>
+                <option value="blue">Синяя</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <label class="checkbox-label">
+                <input type="checkbox" id="show-seconds" checked>
+                <span class="checkmark"></span>
+                Показывать секунды
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-actions">
+            <button class="reset-btn">Сбросить к умолчанию</button>
+            <button class="save-btn">Сохранить</button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="scripts/app.js" defer></script>

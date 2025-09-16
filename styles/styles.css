@@ -91,3 +91,302 @@ body {
   background-image: url("../images/pause.svg");
   right: -1px;
 }
+
+/* Header */
+.header {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.settings-btn {
+  background: none;
+  border: none;
+  color: var(--text-basic);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.settings-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-btn:focus {
+  outline: 2px solid var(--text-basic);
+  outline-offset: 2px;
+}
+
+/* Session Info */
+.session-info {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-basic);
+}
+
+.session-type {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.session-counter {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Settings Overlay */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.settings-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.settings-modal {
+  background: linear-gradient(135deg, #2c2c2c 0%, #3c3c3c 100%);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  color: #f4eddb;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.settings-overlay.hidden .settings-modal {
+  transform: scale(0.9);
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-settings {
+  background: none;
+  border: none;
+  color: #f4eddb;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-settings:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settings-content {
+  padding: 20px 24px;
+}
+
+.settings-section {
+  margin-bottom: 32px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px 0;
+}
+
+.setting-item:last-child {
+  margin-bottom: 0;
+}
+
+.setting-item label {
+  font-size: 14px;
+  color: #f4eddb;
+  font-weight: 500;
+}
+
+.setting-item input[type="number"] {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #f4eddb;
+  font-size: 14px;
+  width: 80px;
+  text-align: center;
+}
+
+.setting-item input[type="number"]:focus {
+  outline: none;
+  border-color: var(--bg-theme);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.setting-item select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #f4eddb;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.setting-item select:focus {
+  outline: none;
+  border-color: var(--bg-theme);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Custom Checkboxes */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  flex: 1;
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  margin-right: 12px;
+  transition: all 0.2s;
+}
+
+.checkbox-label:hover .checkmark {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.checkbox-label input:checked ~ .checkmark {
+  background-color: var(--bg-theme);
+  border-color: var(--bg-theme);
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-label input:checked ~ .checkmark::after {
+  display: block;
+}
+
+/* Settings Actions */
+.settings-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.settings-actions button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f4eddb;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.reset-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.save-btn {
+  background: var(--bg-theme);
+  color: white;
+}
+
+.save-btn:hover {
+  background: color-mix(in srgb, var(--bg-theme) 85%, black);
+}
+
+/* Themes */
+.theme-dark {
+  --bg-theme: #2c2c2c;
+}
+
+.theme-green {
+  --bg-theme: #13b888;
+}
+
+.theme-blue {
+  --bg-theme: #4285f4;
+}
+
+/* Hide seconds when setting is off */
+.hide-seconds .seconds,
+.hide-seconds .separate {
+  display: none;
+}
